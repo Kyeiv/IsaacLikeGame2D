@@ -1,0 +1,50 @@
+﻿# Tiled2Unity generated file. Do not modify by hand.
+# Wavefront file for 'Mapka-las_mesh_0007.obj'
+
+# Vertices (Count = 20)
+v -13 -6 0
+v -14 -6 0
+v -14 -5 0
+v -13 -5 0
+v -13 -7 0
+v -14 -7 0
+v -14 -6 0
+v -13 -6 0
+v -24 -22 0
+v -25 -22 0
+v -25 -21 0
+v -24 -21 0
+v -24 -25 0
+v -25 -25 0
+v -25 -24 0
+v -24 -24 0
+v -24 -26 0
+v -25 -26 0
+v -25 -25 0
+v -24 -25 0
+
+# Texture cooridinates (Count = 10)
+vt 0.875 0.6875
+vt 0.9375 0.6875
+vt 0.9375 0.75
+vt 0.875 0.75
+vt 0.875 0.625
+vt 0.9375 0.625
+vt 0 0.625
+vt 0.0625 0.625
+vt 0.0625 0.6875
+vt 0 0.6875
+
+# Normal
+vn 0 0 -1
+
+# Mesh description
+g Mapka-las_mesh_0007
+
+# Faces
+f 1/1/1 2/2/1 3/3/1 4/4/1
+f 5/5/1 6/6/1 7/2/1 8/1/1
+f 9/7/1 10/8/1 11/9/1 12/10/1
+f 13/1/1 14/2/1 15/3/1 16/4/1
+f 17/5/1 18/6/1 19/2/1 20/1/1
+
