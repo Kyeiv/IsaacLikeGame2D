@@ -33,7 +33,7 @@ public class ScreenFader : MonoBehaviour {
         }
     }
 
-     void AnimationComplete() {
+     public void AnimationComplete() {
         isFading = false;
     }
 }
