@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScreenFader : MonoBehaviour { 
-
+public class ScreenFader : MonoBehaviour
+{
     Animator anim;
     bool isFading = false;
 
@@ -15,25 +15,22 @@ public class ScreenFader : MonoBehaviour {
 
     public IEnumerator FadeToClear() {
         isFading = true;
-        anim.SetTrigger("Visible");
+        anim.SetTrigger("FadeIn");
 
-        while (isFading) {
-            yield return null;
-        }
+        while (isFading)
+           yield return null;
     }
 
     public IEnumerator FadeToBlack()
     {
         isFading = true;
-        anim.SetTrigger("Unvisibe");
+        anim.SetTrigger("FadeOut");
 
         while (isFading)
-        {
             yield return null;
-        }
     }
 
-     public void AnimationComplete() {
+    void AnimationComplete() {
         isFading = false;
     }
 }
