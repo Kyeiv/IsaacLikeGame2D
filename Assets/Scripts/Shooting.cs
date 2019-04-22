@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    public float velX = 5f;
+    public float velX = 0f;
     public float velY = 0f;
     Rigidbody2D rb;
 
@@ -17,7 +17,8 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         rb.velocity = new Vector2(velX, velY);
     }
+
+
 }

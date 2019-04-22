@@ -10,12 +10,14 @@ public class Warp : MonoBehaviour {
     {
         ScreenFader sf = GameObject.FindGameObjectWithTag("Fader").GetComponent<ScreenFader> ();
 
-        yield return StartCoroutine(sf.FadeToBlack());
+        if (collison.tag != "Bullet") {
+            yield return StartCoroutine(sf.FadeToBlack());
 
-        Debug.Log("COLLIDED");
-        collison.gameObject.transform.position = warpTarget.position;
-        Camera.main.transform.position = warpTarget.position;
+            Debug.Log("COLLIDED");
+            collison.gameObject.transform.position = warpTarget.position;
+            Camera.main.transform.position = warpTarget.position;
 
-        yield return StartCoroutine(sf.FadeToClear());
+            yield return StartCoroutine(sf.FadeToClear());
+        }
     }
 }
