@@ -7,7 +7,10 @@ public class PlayerMovement : MonoBehaviour {
     Rigidbody2D rbody;
     Animator anim;
 
-    public GameObject bulletToRight, bulletToLeft, bulletToUp, bulletToDown;
+    public GameObject bulletToRight, bulletToLeft,
+                      bulletToUp, bulletToDown,
+                      bulletToUpLeft, bulletToUpRight,
+                      bulletToDownLeft, bulletToDownRight;
     Vector2 bulletPos;
     public float fireRate = 0.5f;
     float nextFire = 0;
@@ -105,34 +108,46 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         bulletPos = transform.position;
+        bulletPos += new Vector2(horizontalAxis, verticalAxis);
 
-        if (shootingRight)
+        if(shootingUp)
         {
-            bulletPos += new Vector2(+1f, 0f);
+            if (shootingRight)
+            {
+                Instantiate(bulletToUpRight, bulletPos, Quaternion.identity);
+            }
+            else if(shootingLeft)
+            {
+                Instantiate(bulletToUpLeft, bulletPos, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(bulletToUp, bulletPos, Quaternion.identity);
+            }
+        }
+        else if(shootingDown)
+        {
+            if (shootingRight)
+            {
+                Instantiate(bulletToDownRight, bulletPos, Quaternion.identity);
+            }
+            else if (shootingLeft)
+            {
+                Instantiate(bulletToDownLeft, bulletPos, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(bulletToDown, bulletPos, Quaternion.identity);
+            }
+        }
+        else if(shootingRight)
+        {
             Instantiate(bulletToRight, bulletPos, Quaternion.identity);
         }
-        else if (shootingLeft)
+        else if(shootingLeft)
         {
-            bulletPos += new Vector2(-1f, 0f);
             Instantiate(bulletToLeft, bulletPos, Quaternion.identity);
         }
-        else if (shootingUp)
-        {
-            bulletPos += new Vector2(0f, +1f);
-            Instantiate(bulletToUp, bulletPos, Quaternion.identity);
-        }
-        else if (shootingDown)
-        {
-            bulletPos += new Vector2(0f, -1f);
-            Instantiate(bulletToDown, bulletPos, Quaternion.identity);
-        }
-
-        /*
-        if(shootingDown || shootingLeft || shootingUp || shootingDown)
-        {
-            Instantiate(bulletToRight, bulletPos, Quaternion.identity);
-        }
-        */
     }
 
     void handleAnimation(Vector2 movement_vector){
