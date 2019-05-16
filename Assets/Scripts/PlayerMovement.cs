@@ -24,30 +24,146 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        onArrowKeys();
 
-        Vector2 movement_vector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        if (Time.time > nextFire) {
+            nextFire = Time.time + fireRate;
+            onWsadKeys();
+        }
+	}
 
+    void onArrowKeys(){
+        float horizontalAxis = 0,
+              verticalAxis   = 0;
+
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            Debug.Log("KeyCode.UpArrow");
+            verticalAxis += 1;
+        }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            Debug.Log("KeyCode.LeftArrow");
+            horizontalAxis -= 1;
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            Debug.Log("KeyCode.DownArrow");
+            verticalAxis -= 1;
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            Debug.Log("KeyCode.RightArrow");
+            horizontalAxis += 1;
+        }
+
+        Vector2 movement_vector = new Vector2(horizontalAxis, verticalAxis);
+        handleAnimation(movement_vector);
+        rbody.MovePosition(rbody.position + movement_vector * Time.deltaTime);
+    }
+
+    void onWsadKeys()
+    {
+        float horizontalAxis = 0,
+              verticalAxis = 0;
+
+        bool shootingLeft = false,
+             shootingRight = false,
+             shootingUp = false,
+             shootingDown = false;
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            Debug.Log("KeyCode.W");
+            verticalAxis += 1;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            Debug.Log("KeyCode.A");
+            horizontalAxis -= 1;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            Debug.Log("KeyCode.S");
+            verticalAxis -= 1;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            Debug.Log("KeyCode.D");
+            horizontalAxis += 1;
+        }
+
+        if (horizontalAxis != 0)
+        {
+            shootingRight = horizontalAxis > 0;
+            shootingLeft = !shootingRight;
+        }
+        if (verticalAxis != 0)
+        {
+            shootingUp = verticalAxis > 0;
+            shootingDown = !shootingUp;
+        }
+
+        bulletPos = transform.position;
+
+        if (shootingRight)
+        {
+            bulletPos += new Vector2(+1f, 0f);
+            Instantiate(bulletToRight, bulletPos, Quaternion.identity);
+        }
+        else if (shootingLeft)
+        {
+            bulletPos += new Vector2(-1f, 0f);
+            Instantiate(bulletToLeft, bulletPos, Quaternion.identity);
+        }
+        else if (shootingUp)
+        {
+            bulletPos += new Vector2(0f, +1f);
+            Instantiate(bulletToUp, bulletPos, Quaternion.identity);
+        }
+        else if (shootingDown)
+        {
+            bulletPos += new Vector2(0f, -1f);
+            Instantiate(bulletToDown, bulletPos, Quaternion.identity);
+        }
+
+        /*
+        if(shootingDown || shootingLeft || shootingUp || shootingDown)
+        {
+            Instantiate(bulletToRight, bulletPos, Quaternion.identity);
+        }
+        */
+    }
+
+    void handleAnimation(Vector2 movement_vector){
         if (movement_vector != Vector2.zero)
         {
             anim.SetBool("iswalking", true);
             anim.SetFloat("input_x", movement_vector.x);
             anim.SetFloat("input_y", movement_vector.y);
-            if (movement_vector.x > 0){
+            if (movement_vector.x > 0)
+            {
                 facingRight = true;
                 facingLeft = false;
                 facingUp = false;
                 facingDown = false;
-            } else if (movement_vector.x < 0){
+            }
+            else if (movement_vector.x < 0)
+            {
                 facingRight = false;
                 facingLeft = true;
                 facingUp = false;
                 facingDown = false;
-            } else if(movement_vector.y > 0){
+            }
+            else if (movement_vector.y > 0)
+            {
                 facingRight = false;
                 facingLeft = false;
                 facingUp = true;
                 facingDown = false;
-            } else {
+            }
+            else
+            {
                 facingRight = false;
                 facingLeft = false;
                 facingUp = false;
@@ -57,36 +173,6 @@ public class PlayerMovement : MonoBehaviour {
         else
         {
             anim.SetBool("iswalking", false);
-        }
-
-        rbody.MovePosition(rbody.position + movement_vector * Time.deltaTime);
-
-        if (Input.GetButtonDown("Fire1") && Time.time > nextFire) {
-            nextFire = Time.time + fireRate;
-            fire();
-        }
-	}
-
-    void fire() {
-        if (facingRight)
-            bulletPos = transform.position + new Vector3(-0.5f, 0f, 0f);
-        else if (facingLeft)
-            bulletPos = transform.position + new Vector3(0.5f, 0f, 0f);
-
-        bulletPos = transform.position;
-
-        if (facingRight) {
-            bulletPos += new Vector2(+1f, 0f);
-            Instantiate(bulletToRight, bulletPos, Quaternion.identity);
-        } else if (facingLeft){
-            bulletPos += new Vector2(-1f, 0f);
-            Instantiate(bulletToLeft, bulletPos, Quaternion.identity);
-        } else if (facingUp){
-            bulletPos += new Vector2(0f, +1f);
-            Instantiate(bulletToUp, bulletPos, Quaternion.identity);
-        } else { 
-            bulletPos += new Vector2(0f, -1f);
-            Instantiate(bulletToDown, bulletPos, Quaternion.identity);
         }
     }
 }
