@@ -580,6 +580,14 @@ MonoBehaviour:
     type: 3}
   bulletToDown: {fileID: 8433737056146889829, guid: bcefdbb6ba630ea45ae9bb625ff7c521,
     type: 3}
+  bulletToUpLeft: {fileID: 6975679339355899785, guid: 7666dc829db28da48aab6b60afd2d849,
+    type: 3}
+  bulletToUpRight: {fileID: 6975679339355899785, guid: 09eba05016f9ea54088a3e9b51a90ef3,
+    type: 3}
+  bulletToDownLeft: {fileID: 8433737056146889829, guid: 2cbddcdf1606fff4a8b3a7355e015ffe,
+    type: 3}
+  bulletToDownRight: {fileID: 8433737056146889829, guid: c03288d7b58734e43ae6b3870b3ab98f,
+    type: 3}
   fireRate: 0.1
 --- !u!95 &536776534
 Animator:
