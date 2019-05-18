@@ -19,21 +19,38 @@ public class PlayerMovement : MonoBehaviour {
     bool facingLeft = false;
     bool facingUp = false;
     bool facingDown = false;
+    bool canShoot = true;
+    float shottime;
 
 	// Use this for initialization
 	void Start () {
         rbody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        shottime = Time.time;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         onArrowKeys();
 
-        if (Time.time > nextFire) {
-            nextFire = Time.time + fireRate;
+        if(canShoot)
+        {
             onWsadKeys();
         }
+        else
+        {
+            float deltaTIme = Time.time - shottime;
+            if(deltaTIme > fireRate)
+            {
+                canShoot = true;
+            }
+        }
+
+        /*if (Time.time > nextFire) {
+            nextFire = Time.time + fireRate;
+            onWsadKeys();
+        }*/
+
 	}
 
     void onArrowKeys(){
@@ -116,6 +133,12 @@ public class PlayerMovement : MonoBehaviour {
 
         bulletPos = transform.position;
         bulletPos += new Vector2(horizontalAxis, verticalAxis);
+
+        if(bulletPos != Vector2.zero)
+        {
+            canShoot = false;
+            shottime = Time.time;
+        }
 
         if(shootingUp)
         {

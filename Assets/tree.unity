@@ -311,7 +311,7 @@ MonoBehaviour:
     type: 3}
   bulletToDownRight: {fileID: 8433737056146889829, guid: c03288d7b58734e43ae6b3870b3ab98f,
     type: 3}
-  fireRate: 0.5
+  fireRate: 0.3
 --- !u!95 &536776534
 Animator:
   serializedVersion: 3
