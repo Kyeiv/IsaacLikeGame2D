@@ -6,13 +6,14 @@ public class PlayerMovement : MonoBehaviour {
 
     Rigidbody2D rbody;
     Animator anim;
+    public float speed = 10f;
 
     public GameObject bulletToRight, bulletToLeft,
                       bulletToUp, bulletToDown,
                       bulletToUpLeft, bulletToUpRight,
                       bulletToDownLeft, bulletToDownRight;
     Vector2 bulletPos;
-    public float fireRate = 0.5f;
+    public float fireRate = 1f;
     float nextFire = 0;
     bool facingRight = false;
     bool facingLeft = false;
@@ -38,6 +39,7 @@ public class PlayerMovement : MonoBehaviour {
     void onArrowKeys(){
         float horizontalAxis = 0,
               verticalAxis   = 0;
+        float actualSpeed = speed;
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
@@ -60,9 +62,14 @@ public class PlayerMovement : MonoBehaviour {
             horizontalAxis += 1;
         }
 
+        if(verticalAxis!=0 && horizontalAxis != 0)
+        {
+            actualSpeed = actualSpeed / 1.44f;
+        }
+
         Vector2 movement_vector = new Vector2(horizontalAxis, verticalAxis);
         handleAnimation(movement_vector);
-        rbody.MovePosition(rbody.position + movement_vector * Time.deltaTime);
+        rbody.MovePosition(rbody.position + movement_vector * Time.deltaTime * actualSpeed);
     }
 
     void onWsadKeys()

@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class BulletCollision : MonoBehaviour
 {
-    private void OnTriggerEnter2D()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-            Destroy(gameObject);
-            Debug.Log("bullet collision");
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Bullet"))
+            return;
+        Destroy(gameObject);
+        Debug.Log("bullet collision");
     }
 }
