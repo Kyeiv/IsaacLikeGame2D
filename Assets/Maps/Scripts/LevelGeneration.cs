@@ -142,7 +142,7 @@ public class LevelGeneration : MonoBehaviour {
 			mapper.down = room.doorBot;
 			mapper.right = room.doorRight;
 			mapper.left = room.doorLeft;
-			mapper.gameObject.transform.parent = mapRoot;
+            mapper.gameObject.transform.parent = mapRoot;
 		}
 	}
 	void SetRoomDoors(){

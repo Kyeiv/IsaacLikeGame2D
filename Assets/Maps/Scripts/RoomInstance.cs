@@ -27,23 +27,29 @@ public class RoomInstance : MonoBehaviour {
 		GenerateRoomTiles();
 	}
 	void MakeDoors(){
-		//top door, get position then spawn
-		Vector3 spawnPos = transform.position + Vector3.up*(roomSizeInTiles.y/4 * tileSize) - Vector3.up*(tileSize/4);
-		PlaceDoor(spawnPos, doorTop, doorU);
+
+        float step = 190f;
+        float step2 = 110f;
+        //top door, get position then spawn
+        Vector3 spawnPos = transform.position + Vector3.up*(roomSizeInTiles.y/4 * tileSize) - Vector3.up*(tileSize/4);
+		PlaceDoor(spawnPos, doorTop, doorU, new Vector2(0f, step2));
 		//bottom door
 		spawnPos = transform.position + Vector3.down*(roomSizeInTiles.y/4 * tileSize) - Vector3.down*(tileSize/4);
-		PlaceDoor(spawnPos, doorBot, doorD);
+		PlaceDoor(spawnPos, doorBot, doorD, new Vector2(0f, -step2));
 		//right door
 		spawnPos = transform.position + Vector3.right*(roomSizeInTiles.x * tileSize) - Vector3.right*(tileSize);
-		PlaceDoor(spawnPos, doorRight, doorR);
+		PlaceDoor(spawnPos, doorRight, doorR, new Vector2(step, 0f));
 		//left door
 		spawnPos = transform.position + Vector3.left*(roomSizeInTiles.x * tileSize) - Vector3.left*(tileSize);
-		PlaceDoor(spawnPos, doorLeft, doorL);
+		PlaceDoor(spawnPos, doorLeft, doorL, new Vector2(-step, 0f));
 	}
-	void PlaceDoor(Vector3 spawnPos, bool door, GameObject doorSpawn){
+	void PlaceDoor(Vector3 spawnPos, bool door, GameObject doorSpawn, Vector2 sh){
 		// check whether its a door or wall, then spawn
 		if (door){
-			Instantiate(doorSpawn, spawnPos, Quaternion.identity).transform.parent = transform;
+            GameObject temp = Instantiate(doorSpawn, spawnPos, Quaternion.identity);
+            RoomTp teleport = temp.GetComponent<RoomTp>();
+            temp.transform.parent = transform;
+            teleport.shift = sh;
 		}else{
 			Instantiate(doorWall, spawnPos, Quaternion.identity).transform.parent = transform;
 		}

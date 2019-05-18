@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4111353177199620}
   - component: {fileID: 212058162008467170}
   - component: {fileID: 61406581372063362}
-  - component: {fileID: 3165274274647636106}
+  - component: {fileID: 2651094969108270287}
   m_Layer: 0
   m_Name: DoorTrigger
   m_TagString: DoorTrigger
@@ -107,7 +107,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 16, y: 16}
   m_EdgeRadius: 0
---- !u!114 &3165274274647636106
+--- !u!114 &2651094969108270287
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,7 +116,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1152370622949468}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdd8865a00b187f498b46d606fdc827c, type: 3}
+  m_Script: {fileID: 11500000, guid: fb102d3ab5b101e40a1ad9206066bbf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enter: {fileID: 0}
