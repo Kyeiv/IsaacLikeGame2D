@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Fader
   - Bullet
+  - DoorTrigger
   layers:
   - Default
   - TransparentFX
