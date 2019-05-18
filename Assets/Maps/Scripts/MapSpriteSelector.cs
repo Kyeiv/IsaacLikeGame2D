@@ -14,6 +14,9 @@ public class MapSpriteSelector : MonoBehaviour {
 	SpriteRenderer rend;
 	void Start () {
 		rend = GetComponent<SpriteRenderer>();
+        rend.transform.parent = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        rend.transform.position += new Vector3(90f, 50f, 0);
+
 		mainColor = normalColor;
 		PickSprite();
 		PickColor();
