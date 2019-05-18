@@ -15,7 +15,7 @@ public class MapSpriteSelector : MonoBehaviour {
 	void Start () {
 		rend = GetComponent<SpriteRenderer>();
         rend.transform.parent = GameObject.FindGameObjectWithTag("MainCamera").transform;
-        rend.transform.position += new Vector3(90f, 50f, 0);
+        rend.transform.position += new Vector3(135f, 60f, 0);
 
 		mainColor = normalColor;
 		PickSprite();
@@ -80,7 +80,14 @@ public class MapSpriteSelector : MonoBehaviour {
 			mainColor = normalColor;
 		}else if (type == 1){
 			mainColor = enterColor;
-		}
+            GameObject pos = GameObject.FindGameObjectWithTag("pos");
+            Vector3 positionWorld = new Vector3(rend.transform.position.x , rend.transform.position.y , pos.transform.position.z) ;
+            RectTransform rect = pos.GetComponent<RectTransform>();
+            Camera mycam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+            rect.position =  mycam.WorldToScreenPoint(positionWorld);
+
+        }
+        mainColor.a=0.2f;
 		rend.color = mainColor;
 	}
 }

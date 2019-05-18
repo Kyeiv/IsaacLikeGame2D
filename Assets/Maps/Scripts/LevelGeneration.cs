@@ -6,7 +6,7 @@ public class LevelGeneration : MonoBehaviour {
 	Vector2 worldSize = new Vector2(4,4);
 	Room[,] rooms;
 	List<Vector2> takenPositions = new List<Vector2>();
-	int gridSizeX, gridSizeY, numberOfRooms = 20;
+	int gridSizeX, gridSizeY, numberOfRooms = 10;
 	public GameObject roomWhiteObj;
 	public Transform mapRoot;
 	void Start () {
@@ -17,7 +17,7 @@ public class LevelGeneration : MonoBehaviour {
 		gridSizeY = Mathf.RoundToInt(worldSize.y);
 		CreateRooms(); //lays out the actual map
 		SetRoomDoors(); //assigns the doors where rooms would connect
-		DrawMap(); //instantiates objects to make up a map
+		DrawMap(); //instantiates objects to make up a map MINI MAP
 		GetComponent<SheetAssigner>().Assign(rooms); //passes room info to another script which handles generatating the level geometry
 	}
 	void CreateRooms(){
@@ -136,7 +136,7 @@ public class LevelGeneration : MonoBehaviour {
 			drawPos.x *= 16;//aspect ratio of map sprite
 			drawPos.y *= 8; 
             //create map obj and assign its variables
-            GameObject guter = Object.Instantiate(roomWhiteObj, drawPos, Quaternion.identity);
+            GameObject guter = Object.Instantiate(roomWhiteObj, drawPos/2, Quaternion.identity);
             guter.transform.parent = mapRoot;
 
             MapSpriteSelector mapper = guter.GetComponent<MapSpriteSelector>();

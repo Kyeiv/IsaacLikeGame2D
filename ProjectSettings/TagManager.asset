@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - DoorTrigger
   - Minimap
+  - pos
   layers:
   - Default
   - TransparentFX

@@ -30,6 +30,13 @@ public class RoomTp : MonoBehaviour
 
                 mycam.transform.position = new Vector3(tempPos.x, tempPos.y, mycam.transform.position.z);
             }
+
+            {
+                GameObject pos = GameObject.FindGameObjectWithTag("pos");
+                RectTransform rect = pos.GetComponent<RectTransform>();
+               // Vector3 rectPosition = rect.position;
+                rect.position += new Vector3(shift.x/4.2f, shift.y/4.8f, 0f);
+            }
         }
     }
 }
