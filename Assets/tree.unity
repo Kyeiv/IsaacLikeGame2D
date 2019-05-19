@@ -295,21 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 70
-  bulletToRight: {fileID: 8186925554268543116, guid: dfd5ad64847b7d04ab721dcfa2a2dbe2,
-    type: 3}
-  bulletToLeft: {fileID: 9096535668404071122, guid: e49925fcc8638b344930336e799ffe22,
-    type: 3}
-  bulletToUp: {fileID: 6975679339355899785, guid: 846c71d37cac9be49b3093f504ba09ad,
-    type: 3}
-  bulletToDown: {fileID: 8433737056146889829, guid: bcefdbb6ba630ea45ae9bb625ff7c521,
-    type: 3}
-  bulletToUpLeft: {fileID: 6975679339355899785, guid: 7666dc829db28da48aab6b60afd2d849,
-    type: 3}
-  bulletToUpRight: {fileID: 6975679339355899785, guid: 09eba05016f9ea54088a3e9b51a90ef3,
-    type: 3}
-  bulletToDownLeft: {fileID: 8433737056146889829, guid: 2cbddcdf1606fff4a8b3a7355e015ffe,
-    type: 3}
-  bulletToDownRight: {fileID: 8433737056146889829, guid: c03288d7b58734e43ae6b3870b3ab98f,
+  normalBullet: {fileID: 6975679339355899785, guid: 4430100d85997924d835b964531a8d92,
     type: 3}
   fireRate: 0.3
 --- !u!95 &536776534

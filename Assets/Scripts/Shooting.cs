@@ -4,28 +4,19 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    public float velX = 0f;
-    public float velY = 0f;
-    public float speed = 100f;
+    public Vector2 speedVector = Vector2.zero;
     Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        if (velX != 0 && velY != 0)
+
+        if (speedVector.x != 0 && speedVector.y != 0)
         {
-            velY /= 1.44f;
-            velX /= 1.44f;
-
+            speedVector /= 1.44f;
         }
+
+        rb.velocity = speedVector;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        rb.velocity = new Vector2(velX, velY);
-    }
-
-
 }

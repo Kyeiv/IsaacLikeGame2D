@@ -8,10 +8,7 @@ public class PlayerMovement : MonoBehaviour {
     Animator anim;
     public float speed = 10f;
 
-    public GameObject bulletToRight, bulletToLeft,
-                      bulletToUp, bulletToDown,
-                      bulletToUpLeft, bulletToUpRight,
-                      bulletToDownLeft, bulletToDownRight;
+    public GameObject normalBullet;
     Vector2 bulletPos;
     public float fireRate = 1f;
     float nextFire = 0;
@@ -45,12 +42,6 @@ public class PlayerMovement : MonoBehaviour {
                 canShoot = true;
             }
         }
-
-        /*if (Time.time > nextFire) {
-            nextFire = Time.time + fireRate;
-            onWsadKeys();
-        }*/
-
 	}
 
     void onArrowKeys(){
@@ -134,49 +125,13 @@ public class PlayerMovement : MonoBehaviour {
         bulletPos = transform.position;
         bulletPos += new Vector2(horizontalAxis, verticalAxis);
 
-        if(bulletPos != Vector2.zero)
+        if(horizontalAxis != 0 || verticalAxis != 0)
         {
+            Shooting bulletShooting = normalBullet.GetComponent<Shooting>();
+            bulletShooting.speedVector = new Vector2(horizontalAxis * 100, verticalAxis * 100);
+            Instantiate(normalBullet, bulletPos, Quaternion.identity);
             canShoot = false;
             shottime = Time.time;
-        }
-
-        if(shootingUp)
-        {
-            if (shootingRight)
-            {
-                Instantiate(bulletToUpRight, bulletPos, Quaternion.identity);
-            }
-            else if(shootingLeft)
-            {
-                Instantiate(bulletToUpLeft, bulletPos, Quaternion.identity);
-            }
-            else
-            {
-                Instantiate(bulletToUp, bulletPos, Quaternion.identity);
-            }
-        }
-        else if(shootingDown)
-        {
-            if (shootingRight)
-            {
-                Instantiate(bulletToDownRight, bulletPos, Quaternion.identity);
-            }
-            else if (shootingLeft)
-            {
-                Instantiate(bulletToDownLeft, bulletPos, Quaternion.identity);
-            }
-            else
-            {
-                Instantiate(bulletToDown, bulletPos, Quaternion.identity);
-            }
-        }
-        else if(shootingRight)
-        {
-            Instantiate(bulletToRight, bulletPos, Quaternion.identity);
-        }
-        else if(shootingLeft)
-        {
-            Instantiate(bulletToLeft, bulletPos, Quaternion.identity);
         }
     }
 
