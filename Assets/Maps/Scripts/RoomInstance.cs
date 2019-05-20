@@ -28,8 +28,8 @@ public class RoomInstance : MonoBehaviour {
 	}
 	void MakeDoors(){
 
-        float step = 190f;
-        float step2 = 110f;
+        float step = 191f;
+        float step2 = 111f;
         //top door, get position then spawn
         Vector3 spawnPos = transform.position + Vector3.up*(roomSizeInTiles.y/4 * tileSize) - Vector3.up*(tileSize/4);
 		PlaceDoor(spawnPos, doorTop, doorU, new Vector2(0f, step2));
