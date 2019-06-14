@@ -80,12 +80,12 @@ public class EnemyMeeleAI : MonoBehaviour
     
     private void follow()
     {
-        Vector3 target = player.transform.position - transform.position;
+       /* Vector3 target = player.transform.position - transform.position;
         float angle = Mathf.Atan2(target.x, target.y)*Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle - 180, Vector3.forward);
-        transform.position += -transform.right * speed * Time.deltaTime;
+        transform.position += -transform.right * speed * Time.deltaTime;*/
 
-        //transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
     }
 
     private void die()
