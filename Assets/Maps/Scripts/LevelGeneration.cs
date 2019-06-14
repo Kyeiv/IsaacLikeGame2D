@@ -39,6 +39,7 @@ public class LevelGeneration : MonoBehaviour {
 				int iterations = 0;
 				do{
 					checkPos = SelectiveNewPosition();
+                    
 					iterations++;
 				}while(NumberOfNeighbors(checkPos, takenPositions) > 1 && iterations < 100);
 				if (iterations >= 50)
@@ -46,7 +47,7 @@ public class LevelGeneration : MonoBehaviour {
 			}
 			//finalize position
 			rooms[(int) checkPos.x + gridSizeX, (int) checkPos.y + gridSizeY] = new Room(checkPos, 0);
-			takenPositions.Insert(0,checkPos);
+            takenPositions.Insert(0,checkPos);
 		}	
 	}
 	Vector2 NewPosition(){
@@ -139,6 +140,7 @@ public class LevelGeneration : MonoBehaviour {
             GameObject guter = Object.Instantiate(roomWhiteObj, drawPos/2, Quaternion.identity);
             guter.transform.parent = mapRoot;
 
+
             MapSpriteSelector mapper = guter.GetComponent<MapSpriteSelector>();
 			mapper.type = room.type;
 			mapper.up = room.doorTop;
@@ -148,6 +150,9 @@ public class LevelGeneration : MonoBehaviour {
             mapper.gameObject.transform.parent = mapRoot;
 		}
 	}
+    
+
+
 	void SetRoomDoors(){
 		for (int x = 0; x < ((gridSizeX * 2)); x++){
 			for (int y = 0; y < ((gridSizeY * 2)); y++){

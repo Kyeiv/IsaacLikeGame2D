@@ -7,7 +7,9 @@ public class SheetAssigner : MonoBehaviour {
 	Texture2D[] sheetsNormal;
 	[SerializeField]
 	GameObject RoomObj;
-	public Vector2 roomDimensions = new Vector2(16*17,16*9);
+    public GameObject enemy;
+    private Vector2 roompos;
+    public Vector2 roomDimensions = new Vector2(16*17,16*9);
 	public Vector2 gutterSize = new Vector2(16*9,16*4);
 	public void Assign(Room[,] rooms){
 		foreach (Room room in rooms){
@@ -20,7 +22,18 @@ public class SheetAssigner : MonoBehaviour {
 			//find position to place room
 			Vector3 pos = new Vector3(room.gridPos.x * (roomDimensions.x + gutterSize.x), room.gridPos.y * (roomDimensions.y + gutterSize.y), 0);
 			RoomInstance myRoom = Instantiate(RoomObj, pos, Quaternion.identity).GetComponent<RoomInstance>();
-			myRoom.Setup(sheetsNormal[index], room.gridPos, room.type, room.doorTop, room.doorBot, room.doorLeft, room.doorRight);
-		}
+            
+
+            myRoom.Setup(sheetsNormal[index], room.gridPos, room.type, room.doorTop, room.doorBot, room.doorLeft, room.doorRight);
+
+            roompos = pos;
+            spawnEnemy();
+        }
 	}
+
+    void spawnEnemy()
+    {
+        GameObject a = Instantiate(enemy) as GameObject;
+        a.transform.position = roompos;
+    }
 }
