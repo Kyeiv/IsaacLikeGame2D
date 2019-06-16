@@ -11,7 +11,11 @@ public class BulletCollision : MonoBehaviour
         Destroy(gameObject);
         if (other.gameObject.CompareTag("Enemy")){
             EnemyMeeleAI script = other.gameObject.GetComponent<EnemyMeeleAI>();
-            script.currentState = EnemyState.Die;
+            script.enemy_lives--;
+            Debug.Log("decreement");
+            if (script.enemy_lives <= 0){
+                script.currentState = EnemyState.Die;
+            }
         }
 
         Debug.Log("bullet collision");

@@ -15,6 +15,7 @@ public class EnemyMeeleAI : MonoBehaviour
     public float range, speed;
     private bool chooseDir=false, dead=false;
     private Vector3 randomDir;
+    public int enemy_lives = 3;
     //public Patrol patrol;
 
     private Transform moveSpot;
@@ -122,7 +123,7 @@ public class EnemyMeeleAI : MonoBehaviour
 
     private void die()
     {
-        Debug.Log("Die die die");
-        Destroy(gameObject);
+            Debug.Log("Die die die");
+            Destroy(gameObject);
     }
 }
