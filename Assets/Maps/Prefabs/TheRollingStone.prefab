@@ -115,8 +115,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  range: 50
-  speed: 10
+  range: 70
+  speed: 15
 --- !u!61 &8635543245284098179
 BoxCollider2D:
   m_ObjectHideFlags: 0

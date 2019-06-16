@@ -15,11 +15,30 @@ public class EnemyMeeleAI : MonoBehaviour
     public float range, speed;
     private bool chooseDir=false, dead=false;
     private Vector3 randomDir;
+    //public Patrol patrol;
+
+    private Transform moveSpot;
+    //private int randomSpot;
+    private float minX;
+    private float maxX;
+    private float minY;
+    private float maxY;
+    private float waitTime;
+    public float startWaitTime=3;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        minX = transform.position.x - 100;
+        maxX = transform.position.x + 100;
+        minY = transform.position.y - 40;
+        maxY = transform.position.y + 40;
+        waitTime = startWaitTime;
+        moveSpot = new GameObject().transform;
+        moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
     }
 
     // Update is called once per frame
@@ -66,16 +85,29 @@ public class EnemyMeeleAI : MonoBehaviour
 
     private void wander()
     {
-        if(!chooseDir)
+        /*if(!chooseDir)
         {
             StartCoroutine(chooseDirection());
+        }*/
+
+        //transform.position += -transform.right * speed * Time.deltaTime;
+        transform.position = Vector2.MoveTowards(transform.position, moveSpot.position, speed * Time.deltaTime);
+        if (waitTime<=0 || Vector2.Distance(transform.position, moveSpot.position) < 0.2f)
+        {
+            moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+            waitTime = startWaitTime;
+        }
+        else
+        {
+            waitTime -= Time.deltaTime;
         }
 
-        transform.position += -transform.right * speed * Time.deltaTime;
-        if(isPlayerInRange())
+        if (isPlayerInRange())
         {
+            moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
             currentState = EnemyState.Follow;
         }
+
     }
     
     private void follow()
