@@ -2,18 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyState
-{
-    Wander,
-    Follow,
-    Die
-};
-public class EnemyMeeleAI : MonoBehaviour
+public class EnemyDistanceAI : MonoBehaviour
 {
     GameObject player;
     public EnemyState currentState = EnemyState.Wander;
     public float range, speed;
-    private bool chooseDir=false, dead=false;
+    private bool chooseDir = false, dead = false;
     private Vector3 randomDir;
     public int enemy_lives = 3;
     public int damage = 10;
@@ -26,7 +20,7 @@ public class EnemyMeeleAI : MonoBehaviour
     private float minY;
     private float maxY;
     private float waitTime;
-    public float startWaitTime=3;
+    public float startWaitTime = 3;
 
 
 
@@ -62,18 +56,18 @@ public class EnemyMeeleAI : MonoBehaviour
                 break;
         }
 
-        if(isPlayerInRange() && currentState != EnemyState.Die)
+        if (isPlayerInRange() && currentState != EnemyState.Die)
         {
             currentState = EnemyState.Follow;
         }
-        else if(!isPlayerInRange() && currentState != EnemyState.Die)
+        else if (!isPlayerInRange() && currentState != EnemyState.Die)
         {
             currentState = EnemyState.Wander;
         }
     }
 
     private bool isPlayerInRange()
-    {  return Vector3.Distance(transform.position, player.transform.position) <= range; }
+    { return Vector3.Distance(transform.position, player.transform.position) <= range; }
 
     private IEnumerator chooseDirection()
     {
@@ -94,7 +88,7 @@ public class EnemyMeeleAI : MonoBehaviour
 
         //transform.position += -transform.right * speed * Time.deltaTime;
         transform.position = Vector2.MoveTowards(transform.position, moveSpot.position, speed * Time.deltaTime);
-        if (waitTime<=0 || Vector2.Distance(transform.position, moveSpot.position) < 0.2f)
+        if (waitTime <= 0 || Vector2.Distance(transform.position, moveSpot.position) < 0.2f)
         {
             moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
             waitTime = startWaitTime;
@@ -111,21 +105,21 @@ public class EnemyMeeleAI : MonoBehaviour
         }
 
     }
-    
+
     private void follow()
     {
-       /* Vector3 target = player.transform.position - transform.position;
-        float angle = Mathf.Atan2(target.x, target.y)*Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle - 180, Vector3.forward);
-        transform.position += -transform.right * speed * Time.deltaTime;*/
+        /* Vector3 target = player.transform.position - transform.position;
+         float angle = Mathf.Atan2(target.x, target.y)*Mathf.Rad2Deg;
+         transform.rotation = Quaternion.AngleAxis(angle - 180, Vector3.forward);
+         transform.position += -transform.right * speed * Time.deltaTime;*/
 
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
     }
 
     private void die()
     {
-            Debug.Log("Die die die");
-            Destroy(gameObject);
+        Debug.Log("Die die die");
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -137,5 +131,4 @@ public class EnemyMeeleAI : MonoBehaviour
 
         }
     }
-
 }
