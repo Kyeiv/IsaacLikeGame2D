@@ -9,6 +9,7 @@ TagManager:
   - DoorTrigger
   - Minimap
   - pos
+  - Enemy
   layers:
   - Default
   - TransparentFX
