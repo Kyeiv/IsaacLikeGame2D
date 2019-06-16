@@ -9,6 +9,7 @@ public class BulletCollision : MonoBehaviour
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Bullet"))
             return;
         Destroy(gameObject);
+        Destroy(other.gameObject);
         Debug.Log("bullet collision");
     }
 }
