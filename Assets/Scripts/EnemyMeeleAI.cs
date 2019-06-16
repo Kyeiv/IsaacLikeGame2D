@@ -90,6 +90,7 @@ public class EnemyMeeleAI : MonoBehaviour
 
     private void die()
     {
-
+        Debug.Log("Die die die");
+        Destroy(gameObject);
     }
 }
