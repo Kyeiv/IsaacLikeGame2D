@@ -165,5 +165,5 @@ MonoBehaviour:
   range: 80
   speed: 10
   enemy_lives: 3
-  damage: 10
+  damage: 5
   startWaitTime: 3

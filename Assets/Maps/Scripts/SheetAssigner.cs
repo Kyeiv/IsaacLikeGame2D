@@ -12,7 +12,7 @@ public class SheetAssigner : MonoBehaviour {
     private Vector2 roompos;
     public Vector2 roomDimensions = new Vector2(16*17,16*9);
 	public Vector2 gutterSize = new Vector2(16*9,16*4);
-    public int maxNumOfEnemies=10;
+    public int maxNumOfEnemies=3;
     public int minNumOfEnemies=2;
     public void Assign(Room[,] rooms)
     {
@@ -57,20 +57,22 @@ public class SheetAssigner : MonoBehaviour {
 
     void spawnEnemy()
     {
+        Random random = new Random();
         int numOfEnemies = Random.Range(minNumOfEnemies, maxNumOfEnemies);
         
         for (int i = 0; i<numOfEnemies; i++)
         {
             int whichEnemy = Random.Range(1, 3);
+            Vector2 vec = new Vector2(Random.Range(-80f,80f), Random.Range(-60f, 60f));
             if (whichEnemy == 1)
             {
                 GameObject a = Instantiate(enemy1) as GameObject;
-                a.transform.position = roompos;
+                a.transform.position = roompos + vec;
             }
             if(whichEnemy == 2)
             {
                 GameObject a = Instantiate(enemy2) as GameObject;
-                a.transform.position = roompos;
+                a.transform.position = roompos + vec;
             }
 
         }

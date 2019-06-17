@@ -116,9 +116,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   range: 70
-  speed: 30
+  speed: 20
   enemy_lives: 3
-  damage: 10
+  damage: 5
   startWaitTime: 3
 --- !u!61 &8635543245284098179
 BoxCollider2D:
