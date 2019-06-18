@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class EnemyDistanceAI : MonoBehaviour
 {
     GameObject player;
@@ -14,6 +15,12 @@ public class EnemyDistanceAI : MonoBehaviour
     //public Patrol patrol;
     public GameObject speedUp;
     public GameObject shield;
+   
+
+    public GameObject bulletEnemy;
+    private bool coolDownAttack = false;
+    public float coolDown = 0.5f;
+
 
     private Transform moveSpot;
     //private int randomSpot;
@@ -114,8 +121,24 @@ public class EnemyDistanceAI : MonoBehaviour
          float angle = Mathf.Atan2(target.x, target.y)*Mathf.Rad2Deg;
          transform.rotation = Quaternion.AngleAxis(angle - 180, Vector3.forward);
          transform.position += -transform.right * speed * Time.deltaTime;*/
-
+        
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        if (!coolDownAttack)
+        {
+            GameObject bullet = Instantiate(bulletEnemy, transform.position, Quaternion.identity) as GameObject;
+            bullet.GetComponent<ControllerBullet>().GetPlayer(player.transform);
+            bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
+            bullet.GetComponent<ControllerBullet>().isEnemyBullet = true;
+            StartCoroutine(CoolDown());
+        }
+        
+    }
+
+    private IEnumerator CoolDown()
+    {
+        coolDownAttack = true;
+        yield return new WaitForSeconds(coolDown);
+        coolDownAttack = false;
     }
 
     private void die()
@@ -128,6 +151,11 @@ public class EnemyDistanceAI : MonoBehaviour
             Object.Instantiate(shield, transform.position, Quaternion.identity);
         else if ((rand % 10).Equals(0))
             Object.Instantiate(speedUp, transform.position, Quaternion.identity);
+    }
+
+    void attack()
+    {
+
     }
 
     private void OnCollisionEnter2D(Collision2D other)
