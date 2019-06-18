@@ -10,6 +10,8 @@ public class ScoreScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        score = GameObject.FindGameObjectWithTag("GameController").GetComponent<UtilityBehaviors>().getScore();
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<UtilityBehaviors>().resetScore();
         text = gameObject.GetComponent<Text>();   
     }
 
