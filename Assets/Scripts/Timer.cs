@@ -21,4 +21,9 @@ public class Timer : MonoBehaviour
     {
         return seconds;
     }
+
+    public void resetTimer()
+    {
+        seconds = 0.0f;
+    }
 }

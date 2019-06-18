@@ -12,6 +12,7 @@ public class ScoreScript : MonoBehaviour
     {
         score = GameObject.FindGameObjectWithTag("GameController").GetComponent<UtilityBehaviors>().getScore();
         GameObject.FindGameObjectWithTag("GameController").GetComponent<UtilityBehaviors>().resetScore();
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<Timer>().resetTimer();
         text = gameObject.GetComponent<Text>();   
     }
 
@@ -19,5 +20,6 @@ public class ScoreScript : MonoBehaviour
     void Update()
     {
         text.text = "Your score " + score.ToString();
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<Timer>().resetTimer();
     }
 }
