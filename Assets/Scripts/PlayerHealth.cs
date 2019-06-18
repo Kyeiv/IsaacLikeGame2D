@@ -7,8 +7,12 @@ public class PlayerHealth : MonoBehaviour
 {
 	public int health;
     private float resistance = 0.0f;
-    UtilityBehaviors scoreScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<UtilityBehaviors>();
+    UtilityBehaviors scoreScript;
 
+    void Start()
+    {
+        scoreScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<UtilityBehaviors>();
+    }
 
     public void TakeDamage(int damage)
 	{
