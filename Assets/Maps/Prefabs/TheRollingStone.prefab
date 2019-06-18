@@ -119,6 +119,8 @@ MonoBehaviour:
   speed: 20
   enemy_lives: 3
   damage: 5
+  healPotion: {fileID: 6065533046821332541, guid: 16c7d39f785223d49bacecdb776393b5,
+    type: 3}
   startWaitTime: 3
 --- !u!61 &8635543245284098179
 BoxCollider2D:
