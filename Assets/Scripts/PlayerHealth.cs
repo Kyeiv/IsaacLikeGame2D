@@ -7,12 +7,16 @@ public class PlayerHealth : MonoBehaviour
 {
 	public int health;
     private float resistance = 0.0f;
+    UtilityBehaviors scoreScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<UtilityBehaviors>();
 
-	public void TakeDamage(int damage)
+
+    public void TakeDamage(int damage)
 	{
 		health -= (damage - (int)((float)damage * resistance));
-        if(health <= 0)
+        if (health <= 0) {
+            scoreScript.setBossKilled(false);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
         Debug.Log("Health = " + health.ToString());
 	}
 

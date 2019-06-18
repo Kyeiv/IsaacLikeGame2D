@@ -46,6 +46,7 @@ public class BulletCollision : MonoBehaviour
             {
                 scoreScript.addScore(100);
                 script.currentState = EnemyState.Die;
+                scoreScript.setBossKilled(true);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }

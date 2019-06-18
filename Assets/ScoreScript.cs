@@ -16,7 +16,8 @@ public class ScoreScript : MonoBehaviour
         GameObject.FindGameObjectWithTag("GameController").GetComponent<UtilityBehaviors>().resetScore();
         time = (int)GameObject.FindGameObjectWithTag("GameController").GetComponent<Timer>().getTime();
         GameObject.FindGameObjectWithTag("GameController").GetComponent<Timer>().resetTimer();
-        text = gameObject.GetComponent<Text>();   
+        text = gameObject.GetComponent<Text>();
+        CZY_BOSS_ZABITY = GameObject.FindGameObjectWithTag("GameController").GetComponent<UtilityBehaviors>().getBossKilled();
     }
 
     // Update is called once per frame
