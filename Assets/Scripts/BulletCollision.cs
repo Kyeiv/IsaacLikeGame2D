@@ -7,13 +7,11 @@ public class BulletCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-<<<<<<< HEAD
+
         //ScoreScript scoreScript = GameObject.FindGameObjectWithTag("score").GetComponent<ScoreScript>();
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Bullet") || other.gameObject.CompareTag("HealPotion"))
-=======
-        
->>>>>>> dd0d2fa546bec30677155fead6939d8b8c47ceeb
             return;
+
         Destroy(gameObject);
         if (other.gameObject.CompareTag("Enemy")){
             EnemyMeeleAI script = other.gameObject.GetComponent<EnemyMeeleAI>();
