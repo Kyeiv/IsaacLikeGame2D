@@ -18,6 +18,7 @@ public class EnemyMeeleAI : MonoBehaviour
     public int enemy_lives = 3;
     public int damage = 10;
     public GameObject healPotion;
+    public GameObject shield;
     //public Patrol patrol;
 
     private Transform moveSpot;
@@ -127,8 +128,11 @@ public class EnemyMeeleAI : MonoBehaviour
     {
         Debug.Log("Die die die");
         Destroy(gameObject);
-        int rand = Random.Range(1, 10);
-        if(rand.Equals(5))
+        int rand = Random.Range(1, 100);
+
+        if (rand > 97)
+            Object.Instantiate(shield, transform.position, Quaternion.identity);
+        else if ((rand % 10).Equals(0))
             Object.Instantiate(healPotion, transform.position, Quaternion.identity);
     }
 

@@ -166,4 +166,6 @@ MonoBehaviour:
   speed: 10
   enemy_lives: 3
   damage: 5
+  speedUp: {fileID: 8851132920287880758, guid: e356990f432554b4fa2d08cc09a988a5, type: 3}
+  shield: {fileID: 7783274380357685838, guid: 74b176496f414c04aa96b6caba77e613, type: 3}
   startWaitTime: 3

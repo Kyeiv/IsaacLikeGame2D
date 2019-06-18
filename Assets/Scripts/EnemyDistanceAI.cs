@@ -12,6 +12,8 @@ public class EnemyDistanceAI : MonoBehaviour
     public int enemy_lives = 3;
     public int damage = 10;
     //public Patrol patrol;
+    public GameObject speedUp;
+    public GameObject shield;
 
     private Transform moveSpot;
     //private int randomSpot;
@@ -120,6 +122,12 @@ public class EnemyDistanceAI : MonoBehaviour
     {
         Debug.Log("Die die die");
         Destroy(gameObject);
+        int rand = Random.Range(1, 100);
+      
+        if(rand > 97)
+            Object.Instantiate(shield, transform.position, Quaternion.identity);
+        else if ((rand % 10).Equals(0))
+            Object.Instantiate(speedUp, transform.position, Quaternion.identity);
     }
 
     private void OnCollisionEnter2D(Collision2D other)

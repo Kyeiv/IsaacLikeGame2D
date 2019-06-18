@@ -4,14 +4,26 @@ using UnityEngine;
 
 public class ItemPicker : MonoBehaviour
 {
-    public int healValue;
+    public int value;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (gameObject.CompareTag("HealPotion") && other.gameObject.CompareTag("Player"))
         {
             PlayerHealth playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
-            playerHealth.heal(healValue);
+            playerHealth.heal(value);
+            Destroy(gameObject);
+        }
+        else if (gameObject.CompareTag("SpeedUp") && other.gameObject.CompareTag("Player"))
+        {
+            PlayerMovement playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+            playerMovement.speed += value;
+            Destroy(gameObject);
+        }
+        else if (gameObject.CompareTag("Shield") && other.gameObject.CompareTag("Player"))
+        {
+            PlayerHealth playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+            playerHealth.increaseResistance((float)value / 100.0f);
             Destroy(gameObject);
         }
     }
