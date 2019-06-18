@@ -32,7 +32,18 @@ public class BulletCollision : MonoBehaviour
                 script.currentState = EnemyState.Die;
             }
         }
+        else if (other.gameObject.CompareTag("Boss"))
+        {
+            BSAI script = other.gameObject.GetComponent<BSAI>();
+            script.enemy_lives--;
+            Debug.Log("decreement");
+            if (script.enemy_lives <= 0)
+            {
+                script.currentState = EnemyState.Die;
+            }
+        }
 
-        Debug.Log("bullet collision");
+
+        // Debug.Log("bullet collision");
     }
 }

@@ -9,6 +9,7 @@ public class SheetAssigner : MonoBehaviour {
 	GameObject RoomObj;
     public GameObject enemy1;
     public GameObject enemy2;
+    public GameObject[] bosses;
     private Vector2 roompos;
     public Vector2 roomDimensions = new Vector2(16*17,16*9);
 	public Vector2 gutterSize = new Vector2(16*9,16*4);
@@ -16,7 +17,6 @@ public class SheetAssigner : MonoBehaviour {
     public int minNumOfEnemies=2;
     public void Assign(Room[,] rooms)
     {
-        bool firstFor = true;
 
         for (int i = 0; i < rooms.GetLength(0); i++)
         {
@@ -33,21 +33,34 @@ public class SheetAssigner : MonoBehaviour {
                 }
                 //pick a random index for the array
                 int index = Mathf.RoundToInt(Random.value * (sheetsNormal.Length - 1));
+                if (rooms[i, j].type == 2)
+                {
+                    index = sheetsNormal.Length - 1;
+                }
                 //find position to place room
                 Vector3 pos = new Vector3(rooms[i, j].gridPos.x * (roomDimensions.x + gutterSize.x), rooms[i, j].gridPos.y * (roomDimensions.y + gutterSize.y), 0);
                 RoomInstance myRoom = Instantiate(RoomObj, pos, Quaternion.identity).GetComponent<RoomInstance>();
-
+      
 
                 myRoom.Setup(sheetsNormal[index], rooms[i, j].gridPos, rooms[i, j].type, rooms[i, j].doorTop, rooms[i, j].doorBot, rooms[i, j].doorLeft, rooms[i, j].doorRight);
-                if (firstFor)
+                roompos = pos;
+                switch (rooms[i, j].type)
                 {
-                    firstFor = false;
+                    case 0:
+                        {
+                            spawnEnemy();
+                            break;
+                        }
+                    case 2:
+                        {
+                            spawnBoss();
+                            break;
+                        }
 
-                }
-                else
-                {
-                    roompos = pos;
-                    spawnEnemy();
+                    default:
+                        {
+                            break;
+                        }
                 }
 
             }
@@ -77,5 +90,14 @@ public class SheetAssigner : MonoBehaviour {
 
         }
 
+    }
+
+    void spawnBoss()
+    {
+        Random random = new Random();
+        int whichBoss = Random.Range(0, bosses.Length - 1);
+
+        GameObject a = Instantiate(bosses[whichBoss]) as GameObject;
+        a.transform.position = roompos;
     }
 }

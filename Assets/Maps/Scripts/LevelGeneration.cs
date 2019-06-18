@@ -5,7 +5,8 @@ using UnityEngine;
 public class LevelGeneration : MonoBehaviour {
 	Vector2 worldSize = new Vector2(4,4);
 	Room[,] rooms;
-	List<Vector2> takenPositions = new List<Vector2>();
+    Room[] taken;
+    List<Vector2> takenPositions = new List<Vector2>();
 	int gridSizeX, gridSizeY, numberOfRooms = 10;
 	public GameObject roomWhiteObj;
 	public Transform mapRoot;
@@ -28,6 +29,7 @@ public class LevelGeneration : MonoBehaviour {
 		Vector2 checkPos = Vector2.zero;
 		//magic numbers
 		float randomCompare = 0.2f, randomCompareStart = 0.2f, randomCompareEnd = 0.01f;
+
 		//add rooms
 		for (int i =0; i < numberOfRooms -1; i++){
 			float randomPerc = ((float) i) / (((float)numberOfRooms - 1));
@@ -45,10 +47,14 @@ public class LevelGeneration : MonoBehaviour {
 				if (iterations >= 50)
 					print("error: could not create with fewer neighbors than : " + NumberOfNeighbors(checkPos, takenPositions));
 			}
-			//finalize position
-			rooms[(int) checkPos.x + gridSizeX, (int) checkPos.y + gridSizeY] = new Room(checkPos, 0);
+            //finalize position
+            int roomType = 0;
+            if(i== numberOfRooms -2){
+                roomType = 2;
+            }
+			rooms[(int) checkPos.x + gridSizeX, (int) checkPos.y + gridSizeY] = new Room(checkPos, roomType);
             takenPositions.Insert(0,checkPos);
-		}	
+		}
 	}
 	Vector2 NewPosition(){
 		int x = 0, y = 0;
