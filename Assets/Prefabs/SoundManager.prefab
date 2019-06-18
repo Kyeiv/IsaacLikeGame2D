@@ -142,3 +142,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundSound: {fileID: 8300000, guid: df2a9e215aa20c14e87bafa8264c4803, type: 3}
   audioSrc: {fileID: 339521765312909288}
+  mute: 1

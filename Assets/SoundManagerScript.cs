@@ -6,7 +6,7 @@ public class SoundManagerScript : MonoBehaviour
 {
     public AudioClip backgroundSound;
     public AudioSource audioSrc;
-    public bool mute = false;
+    public bool mute = true;
     // Start is called before the first frame update
     void Start()
     {
