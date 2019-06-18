@@ -11,6 +11,7 @@ public class ControllerBullet : MonoBehaviour
     private Vector2 curPos;
     private Vector2 playerPos;
     public int damage = 5;
+    public float bulletSpeed = 50f;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,7 @@ public class ControllerBullet : MonoBehaviour
     void Update()
     {
         curPos = transform.position;
-        transform.position = Vector2.MoveTowards(transform.position, playerPos, 50f * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, playerPos, bulletSpeed * Time.deltaTime);
         if(curPos == lastPos)
         {
             Destroy(gameObject);
