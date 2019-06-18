@@ -11,6 +11,8 @@ TagManager:
   - pos
   - Enemy
   - Nerve
+  - Undefined
+  - Boss
   layers:
   - Default
   - TransparentFX

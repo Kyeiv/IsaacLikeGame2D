@@ -621,6 +621,8 @@ MonoBehaviour:
   RoomObj: {fileID: 1038065722679700, guid: 092b915af527d594aa11083a065a8de8, type: 3}
   enemy1: {fileID: 9057477561692170673, guid: 155d06775231a9e40b854adb7d5828d9, type: 3}
   enemy2: {fileID: 9157020475163020355, guid: 4be5cf7b45b6f3549b0724099114d33d, type: 3}
+  bosses:
+  - {fileID: 9057477561692170673, guid: c41e0f336bbf0f5459f2a321ce11f0cc, type: 3}
   roomDimensions: {x: 272, y: 144}
   gutterSize: {x: 144, y: 64}
   maxNumOfEnemies: 10

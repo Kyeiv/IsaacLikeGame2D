@@ -26,10 +26,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5070922375451369875}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.006, y: 0.287, z: 0}
-  m_LocalScale: {x: 0.16695789, y: 0.0154868625, z: 0.19999999}
-  m_Children:
-  - {fileID: 8482689661416979676}
+  m_LocalPosition: {x: 0.011, y: 0.236, z: 0}
+  m_LocalScale: {x: 0.17075722, y: 0.015656503, z: 0.19999999}
+  m_Children: []
   m_Father: {fileID: 5389127765806741425}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -69,9 +68,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e17c7ae39cf1706479f57dab074ac7ba, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.45121098, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -93,6 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2230a8c1a71a954e8d52e59f59b7c6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scale: 1
 --- !u!1 &9057477561692170673
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,12 +104,12 @@ GameObject:
   - component: {fileID: 5389127765806741425}
   - component: {fileID: 1963563284313747088}
   - component: {fileID: 2916875934829095614}
-  - component: {fileID: 1261663385789154364}
   - component: {fileID: 8635543245284098179}
   - component: {fileID: 3583427543459871399}
+  - component: {fileID: 4261806547384803297}
   m_Layer: 0
   m_Name: TheRollingStoneBoss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,6 +126,7 @@ Transform:
   m_LocalScale: {x: 91.52, y: 92.8, z: 1}
   m_Children:
   - {fileID: 283945301768255301}
+  - {fileID: 8482689661416979676}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -196,24 +197,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1261663385789154364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9057477561692170673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aa51a6a38f4e764c93e61728fc128bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 0
-  range: 70
-  speed: 20
-  enemy_lives: 3
-  damage: 5
-  startWaitTime: 3
 --- !u!61 &8635543245284098179
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -261,6 +244,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &4261806547384803297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9057477561692170673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51b6863c1670ee044ad36788bd7dfe41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  range: 100
+  speed: 70
+  enemy_lives: 100
+  damage: 25
+  startWaitTime: 3
 --- !u!1 &9102973155302904628
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,11 +287,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9102973155302904628}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.018690933, y: -0.06071722, z: 0}
-  m_LocalScale: {x: 1.0322002, y: 1.1865023, z: 1}
+  m_LocalPosition: {x: 0.014191611, y: 0.23504938, z: 0}
+  m_LocalScale: {x: 0.17625564, y: 0.018576477, z: 0.19999999}
   m_Children: []
-  m_Father: {fileID: 283945301768255301}
-  m_RootOrder: 0
+  m_Father: {fileID: 5389127765806741425}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1487857500564908432
 SpriteRenderer:
