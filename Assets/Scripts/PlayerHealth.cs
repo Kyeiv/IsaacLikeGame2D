@@ -10,4 +10,11 @@ public class PlayerHealth : MonoBehaviour
 		health -= damage;
 		Debug.Log("Health = " + health.ToString());
 	}
+
+    public void heal(int value)
+    {
+        health += value;
+        if (health > 100)
+            health = 100;
+    }
 }

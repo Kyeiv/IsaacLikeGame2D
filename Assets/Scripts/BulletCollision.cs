@@ -6,7 +6,7 @@ public class BulletCollision : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Bullet"))
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Bullet") || other.gameObject.CompareTag("HealPotion"))
             return;
         Destroy(gameObject);
         if (other.gameObject.CompareTag("Enemy")){

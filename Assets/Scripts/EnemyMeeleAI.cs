@@ -17,6 +17,7 @@ public class EnemyMeeleAI : MonoBehaviour
     private Vector3 randomDir;
     public int enemy_lives = 3;
     public int damage = 10;
+    public GameObject healPotion;
     //public Patrol patrol;
 
     private Transform moveSpot;
@@ -124,8 +125,11 @@ public class EnemyMeeleAI : MonoBehaviour
 
     private void die()
     {
-            Debug.Log("Die die die");
-            Destroy(gameObject);
+        Debug.Log("Die die die");
+        Destroy(gameObject);
+        int rand = Random.Range(1, 10);
+        if(rand.Equals(5))
+            Object.Instantiate(healPotion, transform.position, Quaternion.identity);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
