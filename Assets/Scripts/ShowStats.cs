@@ -9,6 +9,7 @@ public class ShowStats : MonoBehaviour
     UtilityBehaviors stats;
     Timer timer;
     Text text;
+    GameObject player;
     
     void Start()
     {
@@ -20,6 +21,10 @@ public class ShowStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = "Score: " + stats.getScore() + "       Seconds: " + (int)timer.getTime();
+        player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+            
+        text.text = "Score: " + stats.getScore() + "       Seconds: " + (int)timer.getTime() + "       Speed: " + player.GetComponent<PlayerMovement>().speed +
+                "       Resistance: " + (int)(player.GetComponent<PlayerHealth>().getResistance() * 100);
     }
 }

@@ -39,4 +39,9 @@ public class PlayerHealth : MonoBehaviour
         if (resistance > 0.5f)
             resistance = 0.5f;
     }
+
+    public float getResistance()
+    {
+        return resistance;
+    }
 }
