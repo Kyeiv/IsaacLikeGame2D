@@ -8,10 +8,11 @@ public class BulletCollision : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
 
-        //ScoreScript scoreScript = GameObject.FindGameObjectWithTag("score").GetComponent<ScoreScript>();
+        
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Bullet") || other.gameObject.CompareTag("HealPotion"))
             return;
 
+        UtilityBehaviors scoreScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<UtilityBehaviors>();
         Destroy(gameObject);
         if (other.gameObject.CompareTag("Enemy")){
             EnemyMeeleAI script = other.gameObject.GetComponent<EnemyMeeleAI>();
@@ -19,7 +20,7 @@ public class BulletCollision : MonoBehaviour
             Debug.Log("decreement");
             if (script.enemy_lives <= 0)
             {
-               // scoreScript.score++;
+                scoreScript.addScore(1);
                 script.currentState = EnemyState.Die;
             }
         } else if (other.gameObject.CompareTag("Nerve")) {
@@ -28,7 +29,7 @@ public class BulletCollision : MonoBehaviour
             Debug.Log("decreement");
             if (script.enemy_lives <= 0)
             {
-               // scoreScript.score++;
+                scoreScript.addScore(1);
                 script.currentState = EnemyState.Die;
             }
         }
@@ -39,6 +40,7 @@ public class BulletCollision : MonoBehaviour
             Debug.Log("decreement");
             if (script.enemy_lives <= 0)
             {
+                scoreScript.addScore(100);
                 script.currentState = EnemyState.Die;
             }
         }
