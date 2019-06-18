@@ -11,6 +11,7 @@ TagManager:
   - pos
   - Enemy
   - Nerve
+  - score
   layers:
   - Default
   - TransparentFX
