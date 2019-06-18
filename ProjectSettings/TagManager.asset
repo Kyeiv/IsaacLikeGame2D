@@ -14,6 +14,8 @@ TagManager:
   - HealPotion
   - SpeedUp
   - Shield
+  - Boss
+  - PointsAndTime
   layers:
   - Default
   - TransparentFX
