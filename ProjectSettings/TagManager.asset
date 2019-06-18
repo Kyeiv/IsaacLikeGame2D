@@ -10,6 +10,7 @@ TagManager:
   - Minimap
   - pos
   - Enemy
+  - Nerve
   layers:
   - Default
   - TransparentFX

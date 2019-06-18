@@ -13,7 +13,16 @@ public class BulletCollision : MonoBehaviour
             EnemyMeeleAI script = other.gameObject.GetComponent<EnemyMeeleAI>();
             script.enemy_lives--;
             Debug.Log("decreement");
-            if (script.enemy_lives <= 0){
+            if (script.enemy_lives <= 0)
+            {
+                script.currentState = EnemyState.Die;
+            }
+        } else if (other.gameObject.CompareTag("Nerve")) {
+            EnemyDistanceAI script = other.gameObject.GetComponent<EnemyDistanceAI>();
+            script.enemy_lives--;
+            Debug.Log("decreement");
+            if (script.enemy_lives <= 0)
+            {
                 script.currentState = EnemyState.Die;
             }
         }
