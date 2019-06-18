@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9157020475163020355}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.17, y: -0.7, z: 0}
+  m_LocalPosition: {x: -24.55, y: 0.4, z: 0}
   m_LocalScale: {x: 32, y: 32, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -115,10 +115,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0030883253, y: -0.004117787}
+  m_Offset: {x: 0.0030883253, y: 0.05}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5169633, y: 0.27565733}
     oldSize: {x: 0.32, y: 0.64}
     newSize: {x: 0.32, y: 0.64}
     adaptiveTilingThreshold: 0.5
@@ -126,7 +126,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.27676314, y: 0.5288193}
+  m_Size: {x: 0.27676314, y: 0.31}
   m_EdgeRadius: 0
 --- !u!50 &5634989645834719277
 Rigidbody2D:
@@ -140,7 +140,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -148,7 +148,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &9013110190767712731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +165,10 @@ MonoBehaviour:
   range: 80
   speed: 10
   enemy_lives: 3
-  damage: 5
+  damage: 2
   speedUp: {fileID: 8851132920287880758, guid: e356990f432554b4fa2d08cc09a988a5, type: 3}
   shield: {fileID: 7783274380357685838, guid: 74b176496f414c04aa96b6caba77e613, type: 3}
+  bulletEnemy: {fileID: 486885906328035280, guid: f7c5157a3039ac54ab917330e9801373,
+    type: 3}
+  coolDown: 0.5
   startWaitTime: 3

@@ -235,7 +235,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 150
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -258,10 +258,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   range: 100
-  speed: 70
+  speed: 23
   enemy_lives: 100
   damage: 25
   startWaitTime: 3
+  bulletEnemy: {fileID: 4155022790194925035, guid: f1a7c6c1913a6814e96e3036d9d86407,
+    type: 3}
+  coolDown: 2
 --- !u!1 &9102973155302904628
 GameObject:
   m_ObjectHideFlags: 0
