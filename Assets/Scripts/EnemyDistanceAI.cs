@@ -11,7 +11,7 @@ public class EnemyDistanceAI : MonoBehaviour
     private bool chooseDir = false, dead = false;
     private Vector3 randomDir;
     public int enemy_lives = 3;
-    public int damage = 10;
+    public int damage = 5;
     //public Patrol patrol;
     public GameObject speedUp;
     public GameObject shield;

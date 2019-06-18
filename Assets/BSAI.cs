@@ -23,6 +23,10 @@ public class BSAI : MonoBehaviour
     private float waitTime;
     public float startWaitTime = 3;
 
+    public GameObject bulletEnemy;
+    private bool coolDownAttack = false;
+    public float coolDown = 2f;
+
 
 
     // Start is called before the first frame update
@@ -120,12 +124,27 @@ public class BSAI : MonoBehaviour
          transform.position += -transform.right * speed * Time.deltaTime;*/
 
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        if (!coolDownAttack)
+        {
+            GameObject bullet = Instantiate(bulletEnemy, transform.position, Quaternion.identity) as GameObject;
+            bullet.GetComponent<ControllerBullet>().GetPlayer(player.transform);
+            bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
+            bullet.GetComponent<ControllerBullet>().isEnemyBullet = true;
+            StartCoroutine(CoolDown());
+        }
     }
 
     private void die()
     {
         Debug.Log("Die die die");
         Destroy(gameObject);
+    }
+
+    private IEnumerator CoolDown()
+    {
+        coolDownAttack = true;
+        yield return new WaitForSeconds(coolDown);
+        coolDownAttack = false;
     }
 
     private void OnCollisionEnter2D(Collision2D other)

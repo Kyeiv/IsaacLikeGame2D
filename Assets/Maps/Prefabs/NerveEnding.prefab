@@ -165,7 +165,7 @@ MonoBehaviour:
   range: 80
   speed: 10
   enemy_lives: 3
-  damage: 5
+  damage: 2
   speedUp: {fileID: 8851132920287880758, guid: e356990f432554b4fa2d08cc09a988a5, type: 3}
   shield: {fileID: 7783274380357685838, guid: 74b176496f414c04aa96b6caba77e613, type: 3}
   bulletEnemy: {fileID: 486885906328035280, guid: f7c5157a3039ac54ab917330e9801373,

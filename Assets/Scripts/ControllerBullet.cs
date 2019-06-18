@@ -49,7 +49,7 @@ public class ControllerBullet : MonoBehaviour
             //GetComponent<PlayerHealth>().TakeDamage(damage);
 
         }
-        if (other.gameObject.CompareTag("Nerve"))
+        if (other.gameObject.CompareTag("Nerve") || other.gameObject.CompareTag("Boss"))
         {
             return;
         }
