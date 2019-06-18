@@ -9,6 +9,7 @@ public class SheetAssigner : MonoBehaviour {
 	GameObject RoomObj;
     public GameObject enemy1;
     public GameObject enemy2;
+    public GameObject[] bosses;
     private Vector2 roompos;
     public Vector2 roomDimensions = new Vector2(16*17,16*9);
 	public Vector2 gutterSize = new Vector2(16*9,16*4);
@@ -38,15 +39,24 @@ public class SheetAssigner : MonoBehaviour {
 
 
                 myRoom.Setup(sheetsNormal[index], rooms[i, j].gridPos, rooms[i, j].type, rooms[i, j].doorTop, rooms[i, j].doorBot, rooms[i, j].doorLeft, rooms[i, j].doorRight);
-               
-                if(i != rooms.GetLength(0)/2 || j != rooms.GetLength(1) / 2)
+                roompos = pos;
+                switch (rooms[i, j].type)
                 {
-                    roompos = pos;
-                    spawnEnemy();
-                }
-                else
-                {
+                    case 0:
+                        {
+                            spawnEnemy();
+                            break;
+                        }
+                    case 2:
+                        {
+                            spawnBoss();
+                            break;
+                        }
 
+                    default:
+                        {
+                            break;
+                        }
                 }
 
             }
@@ -76,5 +86,14 @@ public class SheetAssigner : MonoBehaviour {
 
         }
 
+    }
+
+    void spawnBoss()
+    {
+        Random random = new Random();
+        int whichBoss = Random.Range(0, bosses.Length - 1);
+
+        GameObject a = Instantiate(bosses[whichBoss]) as GameObject;
+        a.transform.position = roompos;
     }
 }
