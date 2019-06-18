@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6975679339355899786}
   - component: {fileID: 1015117776319848716}
   m_Layer: 0
-  m_Name: BulletToUpRight.prefab
+  m_Name: normalBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,9 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9d4e34b66159d449ad545c7601b1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velX: 100
-  velY: 100
-  speed: 100
+  speedVector: {x: 0, y: 0}
 --- !u!114 &1015117776319848716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,3 +145,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed63bba5679fcaa4dad09163f40f29cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionGO: {fileID: 3255300453874865440, guid: 94e0d869c91b3c7439fd958f984b3e8f,
+    type: 3}

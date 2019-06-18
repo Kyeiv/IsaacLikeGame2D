@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class BulletCollision : MonoBehaviour
 {
-
+    public GameObject explosionGO;
     private void OnTriggerEnter2D(Collider2D other)
     {
-
         
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Bullet") || other.gameObject.CompareTag("HealPotion"))
             return;
@@ -15,6 +14,7 @@ public class BulletCollision : MonoBehaviour
         UtilityBehaviors scoreScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<UtilityBehaviors>();
         Destroy(gameObject);
         if (other.gameObject.CompareTag("Enemy")){
+            PlayExplosion();
             EnemyMeeleAI script = other.gameObject.GetComponent<EnemyMeeleAI>();
             script.enemy_lives--;
             Debug.Log("decreement");
@@ -24,6 +24,7 @@ public class BulletCollision : MonoBehaviour
                 script.currentState = EnemyState.Die;
             }
         } else if (other.gameObject.CompareTag("Nerve")) {
+            PlayExplosion();
             EnemyDistanceAI script = other.gameObject.GetComponent<EnemyDistanceAI>();
             script.enemy_lives--;
             Debug.Log("decreement");
@@ -35,6 +36,7 @@ public class BulletCollision : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Boss"))
         {
+            PlayExplosion();
             BSAI script = other.gameObject.GetComponent<BSAI>();
             script.enemy_lives--;
             Debug.Log("decreement");
@@ -47,5 +49,10 @@ public class BulletCollision : MonoBehaviour
 
 
         // Debug.Log("bullet collision");
+    }
+
+    private void PlayExplosion() {
+        GameObject explosion = (GameObject)Instantiate(explosionGO);
+        explosion.transform.position = transform.position;
     }
 }
