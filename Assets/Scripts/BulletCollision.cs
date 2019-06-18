@@ -10,7 +10,8 @@ public class BulletCollision : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Bullet") || other.gameObject.CompareTag("HealPotion"))
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Bullet") || other.gameObject.CompareTag("HealPotion") 
+            || other.gameObject.CompareTag("SpeedUp") || other.gameObject.CompareTag("Shield"))
             return;
 
         UtilityBehaviors scoreScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<UtilityBehaviors>();
