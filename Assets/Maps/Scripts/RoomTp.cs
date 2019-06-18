@@ -17,6 +17,8 @@ public class RoomTp : MonoBehaviour
             if (other.gameObject.CompareTag("Player"))
             {
 
+                other.attachedRigidbody.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+
                 ScreenFader sf = GameObject.FindGameObjectWithTag("Fader").GetComponent<ScreenFader>();
 
                 yield return StartCoroutine(sf.FadeToBlack());
@@ -36,7 +38,6 @@ public class RoomTp : MonoBehaviour
                 tempPos += Vector3.right * horMove * moveJump.x; //jump bnetween rooms 
                 tempPos += Vector3.up * vertMove * moveJump.y;
 
-
                 mycam.transform.position = new Vector3(tempPos.x, tempPos.y, mycam.transform.position.z);
 
                 GameObject pos = GameObject.FindGameObjectWithTag("pos");
@@ -46,6 +47,7 @@ public class RoomTp : MonoBehaviour
 
                 yield return StartCoroutine(sf.FadeToClear());
 
+            other.attachedRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
 
             }
         }
