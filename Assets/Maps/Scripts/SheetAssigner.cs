@@ -16,7 +16,6 @@ public class SheetAssigner : MonoBehaviour {
     public int minNumOfEnemies=2;
     public void Assign(Room[,] rooms)
     {
-        bool firstFor = true;
 
         for (int i = 0; i < rooms.GetLength(0); i++)
         {
@@ -39,15 +38,15 @@ public class SheetAssigner : MonoBehaviour {
 
 
                 myRoom.Setup(sheetsNormal[index], rooms[i, j].gridPos, rooms[i, j].type, rooms[i, j].doorTop, rooms[i, j].doorBot, rooms[i, j].doorLeft, rooms[i, j].doorRight);
-                if (firstFor)
-                {
-                    firstFor = false;
-
-                }
-                else
+               
+                if(i != rooms.GetLength(0)/2 || j != rooms.GetLength(1) / 2)
                 {
                     roompos = pos;
                     spawnEnemy();
+                }
+                else
+                {
+
                 }
 
             }

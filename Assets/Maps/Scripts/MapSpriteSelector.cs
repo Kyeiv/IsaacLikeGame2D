@@ -9,11 +9,12 @@ public class MapSpriteSelector : MonoBehaviour {
 			spULD, spRUL, spDRU, spLDR, spUDRL;
 	public bool up, down, left, right;
 	public int type; // 0: normal, 1: enter
-	public Color normalColor, enterColor;
+	public Color normalColor, enterColor, bossColor;
 	Color mainColor;
 	SpriteRenderer rend;
 	void Start () {
-		rend = GetComponent<SpriteRenderer>();
+        bossColor = Color.red;
+        rend = GetComponent<SpriteRenderer>();
         rend.transform.parent = GameObject.FindGameObjectWithTag("MainCamera").transform;
         rend.transform.position += new Vector3(135f, 60f, 0);
 
@@ -86,6 +87,9 @@ public class MapSpriteSelector : MonoBehaviour {
             Camera mycam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
             rect.position =  mycam.WorldToScreenPoint(positionWorld);
 
+        }
+        else if (type == 2){
+            mainColor = bossColor;
         }
         mainColor.a=0.2f;
 		rend.color = mainColor;
