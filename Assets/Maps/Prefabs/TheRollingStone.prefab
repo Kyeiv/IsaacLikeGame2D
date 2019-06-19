@@ -122,7 +122,7 @@ MonoBehaviour:
   healPotion: {fileID: 6065533046821332541, guid: 16c7d39f785223d49bacecdb776393b5,
     type: 3}
   shield: {fileID: 7783274380357685838, guid: 74b176496f414c04aa96b6caba77e613, type: 3}
-  muscle: {fileID: 6290280441028269206, guid: f183ce9018f0a9046a48d70ec33381f5, type: 3}
+  muscle: {fileID: 3728298223846380674, guid: f6eba28c56695db4d88c3a17e5efd481, type: 3}
   startWaitTime: 3
 --- !u!61 &8635543245284098179
 BoxCollider2D:

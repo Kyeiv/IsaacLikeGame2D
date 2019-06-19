@@ -25,6 +25,7 @@ public class ShowStats : MonoBehaviour
         if (player != null)
             
         text.text = "Score: " + stats.getScore() + "       Seconds: " + (int)timer.getTime() + "       Speed: " + player.GetComponent<PlayerMovement>().speed +
-                "       Resistance: " + (int)(player.GetComponent<PlayerHealth>().getResistance() * 100);
+                "       Resistance: " + (int)(player.GetComponent<PlayerHealth>().getResistance() * 100) + "       Attack: " + 
+                (stats.additionalDamage + 1);
     }
 }

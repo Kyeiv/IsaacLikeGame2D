@@ -28,7 +28,7 @@ public class ItemPicker : MonoBehaviour
         }
         else if (gameObject.CompareTag("Muscle") && other.gameObject.CompareTag("Player"))
         {
-            GameObject.FindGameObjectWithTag("GameController").GetComponent<UtilityBehaviors>().additionalDamage++;
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<UtilityBehaviors>().additionalDamage += value;
             Destroy(gameObject);
         }
     }
