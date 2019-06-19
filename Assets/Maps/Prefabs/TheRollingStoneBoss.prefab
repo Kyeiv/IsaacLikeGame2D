@@ -259,7 +259,7 @@ MonoBehaviour:
   currentState: 0
   range: 100
   speed: 23
-  enemy_lives: 2
+  enemy_lives: 75
   damage: 25
   startWaitTime: 3
   bulletEnemy: {fileID: 4155022790194925035, guid: f1a7c6c1913a6814e96e3036d9d86407,

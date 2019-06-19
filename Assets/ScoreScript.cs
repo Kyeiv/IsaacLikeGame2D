@@ -28,6 +28,6 @@ public class ScoreScript : MonoBehaviour
         text.text = "Your score " + (((300 - time) > 0 && CZY_BOSS_ZABITY) ? (score + 300 - time).ToString() : score.ToString());
         GameObject.FindGameObjectWithTag("GameController").GetComponent<Timer>().resetTimer();
         if(CZY_BOSS_ZABITY)
-            textBoss.text = "Congratulations! Yout killed boss!";
+            textBoss.text = "Congratulations! You killed boss!";
     }
 }
