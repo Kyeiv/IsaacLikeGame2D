@@ -141,7 +141,8 @@ public class LevelGeneration : MonoBehaviour {
 			}
 			Vector2 drawPos = room.gridPos;
 			drawPos.x *= 16;//aspect ratio of map sprite
-			drawPos.y *= 8; 
+			drawPos.y *= 8;
+            drawPos += new Vector2(-50.0f, 0);
             //create map obj and assign its variables
             GameObject guter = Object.Instantiate(roomWhiteObj, drawPos/2, Quaternion.identity);
             guter.transform.parent = mapRoot;
