@@ -11,15 +11,16 @@ public class BulletCollision : MonoBehaviour
     {
         
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Bullet") || other.gameObject.CompareTag("HealPotion") 
-            || other.gameObject.CompareTag("SpeedUp") || other.gameObject.CompareTag("Shield"))
+            || other.gameObject.CompareTag("SpeedUp") || other.gameObject.CompareTag("Shield") || other.gameObject.CompareTag("Muscle"))
             return;
 
         UtilityBehaviors scoreScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<UtilityBehaviors>();
+        int addDmg = GameObject.FindGameObjectWithTag("GameController").GetComponent<UtilityBehaviors>().additionalDamage;
         Destroy(gameObject);
         if (other.gameObject.CompareTag("Enemy")){
             PlayExplosion();
             EnemyMeeleAI script = other.gameObject.GetComponent<EnemyMeeleAI>();
-            script.enemy_lives--;
+            script.enemy_lives -= (1 + addDmg);
             Debug.Log("decreement");
             if (script.enemy_lives <= 0)
             {
@@ -29,7 +30,7 @@ public class BulletCollision : MonoBehaviour
         } else if (other.gameObject.CompareTag("Nerve")) {
             PlayExplosion();
             EnemyDistanceAI script = other.gameObject.GetComponent<EnemyDistanceAI>();
-            script.enemy_lives--;
+            script.enemy_lives -= (1 + addDmg);
             Debug.Log("decreement");
             if (script.enemy_lives <= 0)
             {
@@ -41,7 +42,7 @@ public class BulletCollision : MonoBehaviour
         {
             PlayExplosion();
             BSAI script = other.gameObject.GetComponent<BSAI>();
-            script.enemy_lives--;
+            script.enemy_lives -= (1 + addDmg);
             Debug.Log("decreement");
             if (script.enemy_lives <= 0)
             {

@@ -18,6 +18,7 @@ TagManager:
   - PointsAndTime
   - score
   - textBoss
+  - Muscle
   layers:
   - Default
   - TransparentFX

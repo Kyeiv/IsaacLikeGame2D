@@ -26,5 +26,10 @@ public class ItemPicker : MonoBehaviour
             playerHealth.increaseResistance((float)value / 100.0f);
             Destroy(gameObject);
         }
+        else if (gameObject.CompareTag("Muscle") && other.gameObject.CompareTag("Player"))
+        {
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<UtilityBehaviors>().additionalDamage++;
+            Destroy(gameObject);
+        }
     }
 }
