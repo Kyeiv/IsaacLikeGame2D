@@ -16,6 +16,8 @@ TagManager:
   - Shield
   - Boss
   - PointsAndTime
+  - score
+  - textBoss
   layers:
   - Default
   - TransparentFX

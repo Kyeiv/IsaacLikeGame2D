@@ -9,6 +9,7 @@ public class ScoreScript : MonoBehaviour
     public int score=0;
     int time;
     bool CZY_BOSS_ZABITY;
+    private Text textBoss;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,7 @@ public class ScoreScript : MonoBehaviour
         time = (int)GameObject.FindGameObjectWithTag("GameController").GetComponent<Timer>().getTime();
         GameObject.FindGameObjectWithTag("GameController").GetComponent<Timer>().resetTimer();
         text = gameObject.GetComponent<Text>();
+        textBoss = GameObject.FindGameObjectWithTag("textBoss").GetComponent<Text>();
         CZY_BOSS_ZABITY = GameObject.FindGameObjectWithTag("GameController").GetComponent<UtilityBehaviors>().getBossKilled();
     }
 
@@ -25,5 +27,7 @@ public class ScoreScript : MonoBehaviour
     {
         text.text = "Your score " + (((300 - time) > 0 && CZY_BOSS_ZABITY) ? (score + 300 - time).ToString() : score.ToString());
         GameObject.FindGameObjectWithTag("GameController").GetComponent<Timer>().resetTimer();
+        if(CZY_BOSS_ZABITY)
+            textBoss.text = "Congratulations! Yout killed boss!";
     }
 }
