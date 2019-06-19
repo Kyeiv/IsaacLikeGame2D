@@ -15,6 +15,7 @@ public class EnemyDistanceAI : MonoBehaviour
     //public Patrol patrol;
     public GameObject speedUp;
     public GameObject shield;
+    public GameObject muscle;
    
 
     public GameObject bulletEnemy;
@@ -149,6 +150,8 @@ public class EnemyDistanceAI : MonoBehaviour
       
         if(rand > 97)
             Object.Instantiate(shield, transform.position, Quaternion.identity);
+        else if(rand < 4)
+            Object.Instantiate(muscle, transform.position, Quaternion.identity);
         else if ((rand % 10).Equals(0))
             Object.Instantiate(speedUp, transform.position, Quaternion.identity);
     }

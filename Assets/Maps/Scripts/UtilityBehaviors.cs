@@ -7,6 +7,7 @@ public class UtilityBehaviors : MonoBehaviour {
 
     private int score = 0;
     bool bossKilled = false;
+    public int additionalDamage = 0;
 
     void Update () {
 		if (Input.GetKeyDown("r")){//reload scene, for testing purposes

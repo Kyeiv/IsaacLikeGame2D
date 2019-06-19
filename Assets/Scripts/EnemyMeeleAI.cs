@@ -19,6 +19,7 @@ public class EnemyMeeleAI : MonoBehaviour
     public int damage = 10;
     public GameObject healPotion;
     public GameObject shield;
+    public GameObject muscle;
     //public Patrol patrol;
 
     private Transform moveSpot;
@@ -132,6 +133,8 @@ public class EnemyMeeleAI : MonoBehaviour
 
         if (rand > 97)
             Object.Instantiate(shield, transform.position, Quaternion.identity);
+        else if (rand > 4)
+            Object.Instantiate(muscle, transform.position, Quaternion.identity);
         else if ((rand % 10).Equals(0))
             Object.Instantiate(healPotion, transform.position, Quaternion.identity);
     }

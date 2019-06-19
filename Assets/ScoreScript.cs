@@ -20,6 +20,7 @@ public class ScoreScript : MonoBehaviour
         text = gameObject.GetComponent<Text>();
         textBoss = GameObject.FindGameObjectWithTag("textBoss").GetComponent<Text>();
         CZY_BOSS_ZABITY = GameObject.FindGameObjectWithTag("GameController").GetComponent<UtilityBehaviors>().getBossKilled();
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<UtilityBehaviors>().additionalDamage = 0;
     }
 
     // Update is called once per frame
